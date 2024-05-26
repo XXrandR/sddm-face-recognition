@@ -67,7 +67,9 @@ Rectangle {
         }
     ]
 
-    Behavior on color { NumberAnimation { duration: 200 } }
+    transitions: Transition {
+        ColorAnimation { duration: 200 }
+    }
 
     clip: true
     smooth: true
@@ -109,7 +111,7 @@ Rectangle {
         onReleased: { container.focus = true; container.released() }
     }
 
-    Keys.onPressed: {
+    Keys.onPressed: function (event) {
         if (event.key === Qt.Key_Space) {
             container.spaceDown = true;
             container.pressed()
@@ -120,7 +122,7 @@ Rectangle {
         }
     }
 
-    Keys.onReleased: {
+    Keys.onReleased: function (event) {
         if (event.key === Qt.Key_Space) {
             container.spaceDown = false;
             container.released()

@@ -9,7 +9,7 @@ SET(CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE)
 
 # Set version
 set(SDDM_VERSION_MAJOR 0)
-set(SDDM_VERSION_MINOR 20)
+set(SDDM_VERSION_MINOR 21)
 set(SDDM_VERSION_PATCH 0)
 set(SDDM_VERSION_STRING "${SDDM_VERSION_MAJOR}.${SDDM_VERSION_MINOR}.${SDDM_VERSION_PATCH}")
 add_compile_definitions("SDDM_VERSION=\"${SDDM_VERSION_STRING}\"")
@@ -186,7 +186,7 @@ set(ACCOUNTSSERVICE_DATA_DIR    "/var/lib/AccountsService"                      
 set(SYSTEM_CONFIG_DIR           "${CMAKE_INSTALL_PREFIX}/lib/sddm/sddm.conf.d"      CACHE PATH      "Path of the system sddm config directory")
 set(LOG_FILE                    "${CMAKE_INSTALL_FULL_LOCALSTATEDIR}/log/sddm.log"  CACHE PATH      "Path of the sddm log file")
 set(DBUS_CONFIG_FILENAME        "org.freedesktop.DisplayManager.conf"               CACHE STRING    "Name of the sddm config file")
-set(COMPONENTS_TRANSLATION_DIR  "${DATA_INSTALL_DIR}/translations"                  CACHE PATH      "Components translations directory")
+set(COMPONENTS_TRANSLATION_DIR  "${DATA_INSTALL_DIR}/translations-qt${QT_MAJOR_VERSION}" CACHE PATH      "Components translations directory")
 set(SDDM_INITIAL_VT             "1"                                                 CACHE STRING    "Initial tty to use")
 
 

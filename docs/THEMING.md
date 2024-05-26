@@ -8,10 +8,12 @@ We also provide models containing information about the screens, available sessi
 
     ComboBox {
     	id: session
-    	arrowIcon: "angle-down.png"
+    	arrowIcon: Qt.resolvedPath("angle-down.png")
     	model: sessionModel
     	index: sessionModel.lastIndex
     }
+
+Themes are run by a Qt 5 built sddm-greeter, unless the `QtVersion` property in metadata.desktop specifies a different version, such as `QtVersion=6` for using `sddm-greeter-qt6`.
 
 ## Proxy Object
 

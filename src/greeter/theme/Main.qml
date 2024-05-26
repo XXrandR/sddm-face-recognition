@@ -40,22 +40,22 @@ Rectangle {
 
     Connections {
         target: sddm
-        onLoginSucceeded: {
+        function onLoginSucceeded() {
         }
 
-        onLoginFailed: {
+        function onLoginFailed() {
             txtMessage.text = textConstants.loginFailed
             listView.currentItem.password = ""
         }
 
-        onInformationMessage: {
+        function onInformationMessage(message) {
             txtMessage.text = message
         }
     }
 
     Background {
         anchors.fill: parent
-        source: "qrc:/theme/background.png"
+        source: "qrc:///theme/background.png"
         fillMode: Image.PreserveAspectCrop
         onStatusChanged: {
             if (status == Image.Error && source != config.defaultBackground) {
@@ -131,7 +131,7 @@ Rectangle {
                         anchors.left: parent.left
                         anchors.verticalCenter: parent.verticalCenter
                         anchors.margins: 10
-                        source: "angle-left.png"
+                        source: "qrc:///theme/angle-left.png"
                         onClicked: listView.decrementCurrentIndex()
 
                         KeyNavigation.backtab: btnShutdown; KeyNavigation.tab: listView
@@ -162,7 +162,7 @@ Rectangle {
                         anchors.right: parent.right
                         anchors.verticalCenter: parent.verticalCenter
                         anchors.margins: 10
-                        source: "angle-right.png"
+                        source: "qrc:///theme/angle-right.png"
                         onClicked: listView.incrementCurrentIndex()
                         KeyNavigation.backtab: listView; KeyNavigation.tab: session
                     }
@@ -222,7 +222,7 @@ Rectangle {
                     width: 245
                     anchors.verticalCenter: parent.verticalCenter
 
-                    arrowIcon: "angle-down.png"
+                    arrowIcon: "qrc:///theme/angle-down.png"
 
                     model: sessionModel
                     index: sessionModel.lastIndex
@@ -236,6 +236,8 @@ Rectangle {
                     height: parent.height
                     anchors.verticalCenter: parent.verticalCenter
 
+                    visible: layoutBox.visible
+
                     text: textConstants.layout
                     font.pixelSize: 16
                     verticalAlignment: Text.AlignVCenter
@@ -247,7 +249,9 @@ Rectangle {
                     anchors.verticalCenter: parent.verticalCenter
                     font.pixelSize: 14
 
-                    arrowIcon: "angle-down.png"
+                    visible: keyboard.enabled && keyboard.layouts.length > 0
+
+                    arrowIcon: "qrc:///theme/angle-down.png"
 
                     KeyNavigation.backtab: session; KeyNavigation.tab: btnShutdown
                 }
@@ -262,7 +266,7 @@ Rectangle {
                 ImageButton {
                     id: btnReboot
                     height: parent.height
-                    source: "reboot.png"
+                    source: "qrc:///theme/reboot.png"
 
                     visible: sddm.canReboot
 
@@ -274,7 +278,7 @@ Rectangle {
                 ImageButton {
                     id: btnShutdown
                     height: parent.height
-                    source: "shutdown.png"
+                    source: "qrc:///theme/shutdown.png"
 
                     visible: sddm.canPowerOff
 

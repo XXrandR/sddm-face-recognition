@@ -53,7 +53,9 @@ Image {
         }
     ]
 
-    Behavior on opacity { NumberAnimation { duration: 200 } }
+    transitions: Transition {
+        NumberAnimation { property: "opacity"; duration: 200 }
+    }
 
     clip: true
     smooth: true
@@ -75,7 +77,7 @@ Image {
         onReleased: { container.focus = true; container.released() }
     }
 
-    Keys.onPressed: {
+    Keys.onPressed: function (event) {
         if (event.key === Qt.Key_Space) {
             container.spaceDown = true;
             container.pressed()
@@ -86,7 +88,7 @@ Image {
         }
     }
 
-    Keys.onReleased: {
+    Keys.onReleased: function (event) {
         if (event.key === Qt.Key_Space) {
             container.spaceDown = false;
             container.released()

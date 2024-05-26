@@ -37,8 +37,6 @@ FocusScope {
 
     signal login()
 
-    Behavior on height { NumberAnimation { duration: 100 } }
-
     states: [
         State {
             name: ""
@@ -49,6 +47,10 @@ FocusScope {
             PropertyChanges { target: container; height: 225 }
         }
     ]
+
+    transitions: Transition {
+        NumberAnimation { property: "height"; duration: 100 }
+    }
 
     Rectangle {
         id: shadow
@@ -103,7 +105,7 @@ FocusScope {
             focus: true
             visible: showPassword
 
-            Keys.onPressed: {
+            Keys.onPressed: function (event) {
                 if (event.key === Qt.Key_Return || event.key === Qt.Key_Enter) {
                     container.login();
                     event.accepted = true
